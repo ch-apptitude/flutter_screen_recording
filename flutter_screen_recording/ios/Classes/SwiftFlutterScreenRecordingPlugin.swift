@@ -15,7 +15,6 @@ var videoWriterInput : AVAssetWriterInput?
 var nameVideo: String = ""
 var recordAudio: Bool = false;
 var myResult: FlutterResult?
-let screenSize = UIScreen.main.bounds
     
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "flutter_screen_recording", binaryMessenger: registrar.messenger())
@@ -75,8 +74,8 @@ let screenSize = UIScreen.main.bounds
             
             let videoSettings: [String : Any] = [
                 AVVideoCodecKey  : codec,
-                AVVideoWidthKey  : screenSize.width,
-                AVVideoHeightKey : screenSize.height
+                AVVideoWidthKey  : UIScreen.main.bounds.width,
+                AVVideoHeightKey : UIScreen.main.bounds.height
             ]
                         
             if(recordAudio){
