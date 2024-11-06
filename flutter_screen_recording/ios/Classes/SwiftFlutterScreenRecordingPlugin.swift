@@ -172,22 +172,6 @@ var myResult: FlutterResult?
         
         self.videoWriter?.finishWriting {
             print("finished writing video");
-
-            //Now save the video
-            PHPhotoLibrary.shared().performChanges({
-                PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: self.videoOutputURL!)
-            }) { saved, error in
-                if saved {
-                    let alertController = UIAlertController(title: "Your video was successfully saved", message: nil, preferredStyle: .alert)
-                    let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    alertController.addAction(defaultAction)
-                    //self.present(alertController, animated: true, completion: nil)
-                }
-                if error != nil {
-                    print("Video did not save for some reason", error.debugDescription);
-                    debugPrint(error?.localizedDescription ?? "error is nil");
-                }
-            }
         }
     
 }
